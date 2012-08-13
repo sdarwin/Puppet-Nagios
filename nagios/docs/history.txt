@@ -1,0 +1,6 @@
+
+2012-07-25
+
+Added files from https://github.com/duritong/puppet-nagios
+change operatingsystem to osfamily.  change centos to redhat
+

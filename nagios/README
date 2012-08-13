@@ -1,0 +1,29 @@
+Introduction/Notes
+==================
+
+As of 2012/08/13 this is just a work in progress.   Don't use.
+
+This was based on the immerda project, which was based on David Schmitt. See docs/README.orig for instructions.
+
+The goal is to create a complete nagios puppet implementation that works right out of the box.   As of July 2012, I only see partial and broken
+nagios examples, although there may actually be something somewhere.  
+
+=======================
+
+Example: To get a service to work, use this syntax on a target node:
+
+nagios::service::http {test:} 
+
+Notice in this example that it doesn't use the keyword "include".  It is just calling a resource.
+
+
+License
+=======
+
+Copyright (C) 2007 David Schmitt <david@schmitt.edv-bus.at>
+See the file LICENSE in the top directory for the full license.
+
+Copyright (C) 2010 Riseup Networks <micah@riseup.net>
+
+Copyright (C) 2012 Sam Darwin <samuel.d.darwin at gmail>
+
