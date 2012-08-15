@@ -15,6 +15,10 @@
 #
 
 class nagios {
+
+	#this was originally included in site.pp
+	include nagios::defaults
+
     case $nagios_httpd {
         'absent': { }
         'lighttpd': { include lighttpd }

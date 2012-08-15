@@ -18,5 +18,12 @@ service { apache:
                    Package["httpd"] ]
   }
 
+apache::vhost {'nagios':
+      port => 80,
+      docroot => '/var/www/html/nagios',
+      priority => 25,
+      servername => 'nagios',
+    }
+
 }
 

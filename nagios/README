@@ -1,12 +1,19 @@
 Introduction/Notes
 =====================
 
-As of 2012/08/13 this is just a work in progress.   Don't use.
+As of 2012/08/13 this is just a work in progress.   Don't use.  Should be ready soon.
 
-This was based on the immerda project, which was based on David Schmitt. See docs/README.orig for instructions.
+TODO:  
+vhost for nagios
+test of different os's
+automate population of nagios IP address.  It must be manually set right now.
+
+This was based on the immerda project, which was based on David Schmitt. See docs/README.orig for instructions.  NRPE from mstanislav.
 
 The goal is to create a complete nagios puppet implementation that works right out of the box.   As of July 2012, I only see partial and broken
-nagios examples, although there may actually be something somewhere.  
+nagios examples, although who knows.
+
+To change nagios admin password: install httpd-tools, run htpasswd htpasswd.users admin inside the files dir on the htpasswd.users file.
 
 =======================
 

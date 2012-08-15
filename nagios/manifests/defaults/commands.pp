@@ -7,6 +7,8 @@ class nagios::defaults::commands {
   case $::osfamily {
       debian: {
         nagios_command {
+          check_nrpe:
+            command_line => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$';
           check_dummy:
             command_line => '$USER1$/check_dummy $ARG1$';
           check_https_cert:
@@ -33,6 +35,8 @@ class nagios::defaults::commands {
       }
       default: {
         nagios_command {
+         check_nrpe:
+            command_line => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$';
           check_dummy:
             command_line => '$USER1$/check_dummy $ARG1$';
           check_ping:

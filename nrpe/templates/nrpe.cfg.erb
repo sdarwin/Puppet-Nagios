@@ -1,0 +1,27 @@
+log_facility=daemon
+pid_file=/var/run/nrpe.pid
+debug=0
+
+nrpe_user=nagios
+nrpe_group=nagios
+
+server_port=5666
+allowed_hosts=<%= @nagiosip1 %>,<%= @nagiosip2 %>,127.0.0.1
+
+#be safe
+dont_blame_nrpe=0
+
+command_timeout=60
+connection_timeout=300
+
+command[check_root]=/usr/<%= libpath %>/nagios/plugins/check_disk -w 20% -c 10% -p /
+command[check_boot]=/usr/<%= libpath %>/nagios/plugins/check_disk -w 20% -c 10% -p /boot
+command[check_tmp]=/usr/<%= libpath %>/nagios/plugins/check_disk -w 20% -c 10% -p /tmp
+command[check_opt]=/usr/<%= libpath %>/nagios/plugins/check_disk -w 20% -c 10% -p /opt
+command[check_var]=/usr/<%= libpath %>/nagios/plugins/check_disk -w 20% -c 10% -p /var
+command[check_home]=/usr/<%= libpath %>/nagios/plugins/check_disk -w 20% -c 10% -p /home
+command[check_usr]=/usr/<%= libpath %>/nagios/plugins/check_disk -w 20% -c 10% -p /usr
+#can check_load be populated from facter?
+command[check_load]=/usr/<%= libpath %>/nagios/plugins/check_load -w 24,12,6 -c 32,16,8
+command[check_swap]=/usr/<%= libpath %>/nagios/plugins/check_swap -w 90% -c 85%
+

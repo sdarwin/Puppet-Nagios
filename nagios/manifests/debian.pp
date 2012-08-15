@@ -2,10 +2,18 @@ class nagios::debian inherits nagios::base {
 
     Package['nagios'] { name => 'nagios3' }
 
-    package { [ 'nagios-plugins', 'nagios-snmp-plugins','nagios-nrpe-plugin' ]:
+    package { [ 'nagios-plugins', 'nagios-snmp-plugins' ]:
         ensure => 'present',
         notify => Service['nagios'],
     }
+
+if !defined(Package["nagios-plugins-nrpe"]) {
+        package {"nagios-plugins-nrpe":
+                ensure => installed,
+                notify => Service['nagios'],
+                }
+        }
+
 
     Service['nagios'] {
         name => 'nagios3',

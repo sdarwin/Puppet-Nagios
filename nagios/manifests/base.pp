@@ -1,7 +1,7 @@
 class nagios::base {
     # include the variables
     include nagios::defaults::vars
-
+   
     package { 'nagios':
         alias => 'nagios',
         ensure => present,   

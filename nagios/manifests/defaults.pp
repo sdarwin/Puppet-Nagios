@@ -2,6 +2,7 @@ class nagios::defaults {
 
     # include some default nagios objects
 
+    include nagios::defaults::services
     include nagios::defaults::commands
     include nagios::defaults::contactgroups
     include nagios::defaults::contacts
@@ -9,4 +10,5 @@ class nagios::defaults {
     include nagios::defaults::templates
     include nagios::defaults::timeperiods
     include nagios::defaults::plugins
+
 }
