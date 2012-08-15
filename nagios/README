@@ -4,7 +4,7 @@ Introduction/Notes
 As of 2012/08/13 this is just a work in progress.   Don't use.  Should be ready soon.
 
 TODO:  
-vhost for nagios
+ubuntu (at least) : user and group nagios need to exist.  Add a resource.
 test of different os's
 automate population of nagios IP address.  It must be manually set right now.
 

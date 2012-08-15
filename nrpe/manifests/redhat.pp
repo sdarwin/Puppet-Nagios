@@ -40,6 +40,8 @@ class nrpe::redhat {
         subscribe => File["/etc/nagios/nrpe.cfg"];
     }
 
+   $pid_file = "/var/run/nrpe.pid"
+
     file { 
         "/etc/nagios/nrpe.cfg":
             ensure  => present,

@@ -1,14 +1,16 @@
 class nagios::defaults::commands {
-
-  include nagios::command::smtp
-  include nagios::command::imap_pop3
+ 
+  #the following lines conflicts on ubuntu.  Let's move it to other OS instead.
+  #include nagios::command::smtp
+  #include nagios::command::imap_pop3
 
   # common service commands
   case $::osfamily {
-      debian: {
+      'debian': {
         nagios_command {
-          check_nrpe:
-            command_line => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$';
+		#conflicts on ubuntu
+          #check_nrpe:
+          #  command_line => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$';
           check_dummy:
             command_line => '$USER1$/check_dummy $ARG1$';
           check_https_cert:
@@ -34,6 +36,9 @@ class nagios::defaults::commands {
         }
       }
       default: {
+	include nagios::command::smtp
+	include nagios::command::imap_pop3
+
         nagios_command {
          check_nrpe:
             command_line => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$';

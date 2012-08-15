@@ -1,24 +1,41 @@
 class nagios::debian inherits nagios::base {
 
-    Package['nagios'] { name => 'nagios3' }
+        exec { "apt-update":
+        command     => "/usr/bin/apt-get update",
+        refreshonly => 'true';
+        }
 
-    package { [ 'nagios-plugins', 'nagios-snmp-plugins' ]:
-        ensure => 'present',
-        notify => Service['nagios'],
-    }
-
-if !defined(Package["nagios-plugins-nrpe"]) {
-        package {"nagios-plugins-nrpe":
-                ensure => installed,
-                notify => Service['nagios'],
-                }
+    package { 'nagios':
+         name => 'nagios3',
+         require => Exec["apt-update"],
+         }
+    service { 'nagios':
+        name => 'nagios3',
+        hasstatus => true,
         }
 
 
-    Service['nagios'] {
-        name => 'nagios3',
-        hasstatus => true,
-    }
+    package { [ 'nagios-snmp-plugins' ]:
+        ensure => 'present',
+        notify => Service['nagios'],
+    require => Exec["apt-update"],
+}
+
+if !defined(Package["nagios-nrpe-plugin"]) {
+        package {"nagios-nrpe-plugin":
+                ensure => installed,
+                notify => Service['nagios'],
+                require => Exec["apt-update"],
+		}
+        }
+
+if !defined(Package["nagios-plugins"]) {
+        package {"nagios-plugins":
+                ensure => installed,
+                notify => Service['nagios'],
+		require => Exec["apt-update"],
+                }
+        }
 
     File['nagios_htpasswd', 'nagios_cgi_cfg'] { group => 'www-data' }
 

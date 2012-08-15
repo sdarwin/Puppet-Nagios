@@ -1,0 +1,18 @@
+
+# install puppet client
+
+#ubuntu:
+#on client:
+apt-get install puppet
+vi /etc/defaults/puppet
+puppetd --waitforcert 30 --server puppetserver.domain.net -v
+
+#on server
+puppetca --list
+puppetca --sign
+
+#to allow puppet kick from the server, add auth.conf and the agent section in puppet.conf.
+
+
+
+

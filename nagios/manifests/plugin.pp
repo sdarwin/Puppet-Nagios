@@ -2,10 +2,21 @@ define nagios::plugin(
     $source = 'absent',
     $ensure = present
 ){
+
+
+   case $::osfamily {
+    'redhat': {
+        $libpath = "lib64"
+	}
+    'debian': {
+	$libpath = "lib"
+	}
+	}
+
   file{$name:
     path => $hardwaremodel ? {
-      'x86_64' => "/usr/lib64/nagios/plugins/$name",
-      default => "/usr/lib/nagios/plugins/$name",
+      'x86_64' => "/usr/$libpath/nagios/plugins/$name",
+      default => "/usr/$libpath/nagios/plugins/$name",
     },
     ensure => $ensure,
     source => $source ? {

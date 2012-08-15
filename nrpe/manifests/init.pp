@@ -1,8 +1,11 @@
 
 class nrpe {
 	#automated this collection?
+    #$nagiosip1 = '23.20.253.148'
+    #$nagiosip2 = '10.29.160.230'
+
     $nagiosip1 = '23.20.253.148'
-    $nagiosip2 = '10.29.160.230'
+    $nagiosip2 = 'nagios-server'
 
     case $::osfamily {
         'redhat': {

@@ -1,5 +1,18 @@
 class nagios::redhat inherits nagios::base {
 
+    package { 'nagios':
+        alias => 'nagios',
+        ensure => present,
+    }
+
+    service { 'nagios':
+        ensure => running,
+        enable => true,
+        #hasstatus => true, #fixme!
+        require => Package['nagios'],
+    }
+
+
 #moving 'nagios-plugins-nrpe' to nrpe module
     package { [ 'nagios-plugins-smtp','nagios-plugins-http', 'nagios-plugins-ssh', 'nagios-plugins-tcp', 'nagios-plugins-dig', 'nagios-plugins-load', 'nagios-plugins-dns', 'nagios-plugins-ping', 'nagios-plugins-procs', 'nagios-plugins-users', 'nagios-plugins-ldap', 'nagios-plugins-disk', 'nagios-plugins-swap', 'nagios-plugins-nagios', 'nagios-plugins-ntp', 'nagios-plugins-snmp' ]:
         ensure => 'present',

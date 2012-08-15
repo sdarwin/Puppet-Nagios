@@ -1,4 +1,13 @@
 class nrpe::debian {
+
+# if ($architecture == "i386") {
+#        $libpath = "lib"
+#    } else {
+#        $libpath = "lib64"
+#    }
+
+    $libpath = "lib"
+
     package { [ "nagios-nrpe-server", "libnagios-plugin-perl", "libcache-cache-perl" ]: ensure => present }
 
 if !defined(Package["nagios-plugins"]) {
@@ -14,6 +23,8 @@ if !defined(Package["nagios-plugins"]) {
         pattern => "nrpe",
         require => Package["nagios-nrpe-server"],
     }
+
+    $pid_file = "/var/run/nrpe.pid"
 
     file {
         "/usr/lib/nagios/plugins/contrib":
@@ -32,7 +43,9 @@ if !defined(Package["nagios-plugins"]) {
             owner   => "nagios",
             group   => "nagios",
             mode    => "0664",
-            source  => "puppet:///modules/nrpe/nrpe.cfg",
+	    #S.D. new
+	    content => template("nrpe/nrpe.cfg.erb"),	
+            #source  => "puppet:///modules/nrpe/nrpe.cfg",
             require => Package["nagios-nrpe-server"],
             notify  => Service["nagios-nrpe-server"];
     }

@@ -2,18 +2,6 @@ class nagios::base {
     # include the variables
     include nagios::defaults::vars
    
-    package { 'nagios':
-        alias => 'nagios',
-        ensure => present,   
-    }
-
-    service { 'nagios':
-        ensure => running,
-        enable => true,
-        #hasstatus => true, #fixme!
-        require => Package['nagios'],
-    }
-
     # this file should contain all the nagios_puppet-paths:
     file { 'nagios_main_cfg':
             path => "${nagios::defaults::vars::int_nagios_cfgdir}/nagios.cfg",
@@ -187,5 +175,15 @@ class nagios::base {
     if $use_munin {
         include nagios::munin
     }
+	#S.D. 2012 purge some original files, is this necessary?
+
+    file{[ "${nagios::defaults::vars::int_nagios_cfgdir}/conf.d/contacts_nagios2.cfg",
+           "${nagios::defaults::vars::int_nagios_cfgdir}/conf.d/extinfo_nagios2.cfg",
+           "${nagios::defaults::vars::int_nagios_cfgdir}/conf.d/generic-host_nagios2.cfg",
+           "${nagios::defaults::vars::int_nagios_cfgdir}/conf.d/generic-service_nagios2.cfg",
+           "${nagios::defaults::vars::int_nagios_cfgdir}/conf.d/hostgroups_nagios2.cfg" ]:
+        ensure => absent,
+    }
+
 
 }
