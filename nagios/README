@@ -4,9 +4,11 @@ Introduction/Notes
 As of 2012/08/13 this is just a work in progress.   Don't use.  Should be ready soon.
 
 TODO:  
+get apt-update to run before packages.
 ubuntu (at least) : user and group nagios need to exist.  Add a resource.
-test of different os's
-automate population of nagios IP address.  It must be manually set right now.
+
+TODO - NICE TO HAVE:
+automate population of nagios server IP address into nrpe.cfg.  It must be manually set right now.
 
 This was based on the immerda project, which was based on David Schmitt. See docs/README.orig for instructions.  NRPE from mstanislav.
 

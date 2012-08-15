@@ -6,6 +6,13 @@ class nrpe::debian {
 #        $libpath = "lib64"
 #    }
 
+#should work on this
+#        exec { "apt-update":
+#        command     => "/usr/bin/apt-get update",
+#        refreshonly => 'true';
+#        }
+
+
     $libpath = "lib"
 
     package { [ "nagios-nrpe-server", "libnagios-plugin-perl", "libcache-cache-perl" ]: ensure => present }

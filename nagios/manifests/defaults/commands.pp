@@ -8,9 +8,9 @@ class nagios::defaults::commands {
   case $::osfamily {
       'debian': {
         nagios_command {
-		#conflicts on ubuntu
-          #check_nrpe:
-          #  command_line => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$';
+		#the 1 here is to avoid dup definition with ubuntu cfg file, place there by who knows what
+          check_nrpe1:
+            command_line => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$';
           check_dummy:
             command_line => '$USER1$/check_dummy $ARG1$';
           check_https_cert:
@@ -40,7 +40,8 @@ class nagios::defaults::commands {
 	include nagios::command::imap_pop3
 
         nagios_command {
-         check_nrpe:
+		#the 1 here is to remain consistent with debian, above
+         check_nrpe1:
             command_line => '$USER1$/check_nrpe -H $HOSTADDRESS$ -c $ARG1$';
           check_dummy:
             command_line => '$USER1$/check_dummy $ARG1$';

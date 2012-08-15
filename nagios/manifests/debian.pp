@@ -1,5 +1,7 @@
 class nagios::debian inherits nagios::base {
 
+	include nagios::apache
+
         exec { "apt-update":
         command     => "/usr/bin/apt-get update",
         refreshonly => 'true';

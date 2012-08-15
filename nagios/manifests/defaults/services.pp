@@ -5,7 +5,7 @@ nagios_service {
         use => 'generic-service',
         hostgroup_name => 'linux-servers',
         service_description => 'root filesystem',
-        check_command => 'check_nrpe!check_root';
+        check_command => 'check_nrpe1!check_root';
 	}
 
 nagios_service {
@@ -13,7 +13,7 @@ nagios_service {
         use => 'generic-service',
         hostgroup_name => 'linux-servers',
         service_description => 'boot filesystem',
-        check_command => 'check_nrpe!check_boot';
+        check_command => 'check_nrpe1!check_boot';
         }
 
 nagios_service {
@@ -21,7 +21,7 @@ nagios_service {
         use => 'generic-service',
         hostgroup_name => 'linux-servers',
         service_description => 'home filesystem',
-        check_command => 'check_nrpe!check_home';
+        check_command => 'check_nrpe1!check_home';
         }
 
 nagios_service {
@@ -29,7 +29,7 @@ nagios_service {
         use => 'generic-service',
         hostgroup_name => 'linux-servers',
         service_description => 'opt filesystem',
-        check_command => 'check_nrpe!check_opt';
+        check_command => 'check_nrpe1!check_opt';
         }
 
 nagios_service {
@@ -37,7 +37,7 @@ nagios_service {
         use => 'generic-service',
         hostgroup_name => 'linux-servers',
         service_description => 'var filesystem',
-        check_command => 'check_nrpe!check_var';
+        check_command => 'check_nrpe1!check_var';
         }
 
 nagios_service {
@@ -45,14 +45,14 @@ nagios_service {
         use => 'generic-service',
         hostgroup_name => 'linux-servers',
         service_description => 'usr filesystem',
-        check_command => 'check_nrpe!check_usr';
+        check_command => 'check_nrpe1!check_usr';
         }
 nagios_service {
         'check_load':
         use => 'generic-service',
         hostgroup_name => 'linux-servers',
         service_description => 'check load',
-        check_command => 'check_nrpe!check_load';
+        check_command => 'check_nrpe1!check_load';
         }
 
 nagios_service {
@@ -60,7 +60,7 @@ nagios_service {
         use => 'generic-service',
         hostgroup_name => 'linux-servers',
         service_description => 'check swap',
-        check_command => 'check_nrpe!check_swap';
+        check_command => 'check_nrpe1!check_swap';
         }
 
 
