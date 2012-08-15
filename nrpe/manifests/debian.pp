@@ -24,7 +24,7 @@ if !defined(Package["nagios-plugins"]) {
         require => Package["nagios-nrpe-server"],
     }
 
-    $pid_file = "/var/run/nrpe.pid"
+    $pid_file = "/var/run/nagios/nrpe.pid"
 
     file {
         "/usr/lib/nagios/plugins/contrib":
