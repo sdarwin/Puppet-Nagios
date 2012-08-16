@@ -44,6 +44,10 @@ if !defined(Package["nagios-plugins-nrpe"]) {
         hasstatus => true,
     }
 
+       user { apache:
+                ensure => present
+                }
+
     if ($nagios_allow_external_cmd) {
         file { '/var/spool/nagios/cmd':
             ensure => 'directory',

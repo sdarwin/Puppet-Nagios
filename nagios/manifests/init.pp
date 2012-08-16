@@ -16,6 +16,22 @@
 
 class nagios {
 
+	@@host {nagiosserver1:
+		ensure => present,
+		name => nagiosserver1,
+		ip => $::ipaddress
+		}
+
+	#room for enhancement here.  it's just a dup of nagiosserver1.
+ 	@@host {nagiosserver2:
+                ensure => present,
+                name => nagiosserver2,
+                ip => $::ipaddress
+                }
+
+
+	$nagios_allow_external_cmd=true
+
 	#this was originally included in site.pp
 	include nagios::defaults
 
