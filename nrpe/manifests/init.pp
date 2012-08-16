@@ -3,6 +3,8 @@ class nrpe {
 
  	Host <<||>>
 
+	include nagios::common
+
     case $::osfamily {
         'redhat': {
 		include nrpe::yum

@@ -1,4 +1,8 @@
 
+2012-08-15
+
+Numerous changes all week.  Haven't published version 0.1 yet.
+
 2012-07-25
 
 Added files from https://github.com/duritong/puppet-nagios

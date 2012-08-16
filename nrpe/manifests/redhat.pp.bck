@@ -11,6 +11,25 @@ class nrpe::redhat {
         require => Yumrepo["epel"];
     }
 
+	if !defined(Package["nagios-plugins"]) {
+        package {"nagios-plugins":
+                ensure => installed,
+                }
+        }
+
+	if !defined(Package["nagios-plugins-perl"]) {
+        package {"nagios-plugins-perl":
+                ensure => installed,
+                }
+        }
+
+	if !defined(Package["nagios-plugins-nrpe"]) {
+        package {"nagios-plugins-nrpe":
+                ensure => installed,
+                }
+        }
+
+
     service { "nrpe":
         ensure    => running,
         enable    => true,

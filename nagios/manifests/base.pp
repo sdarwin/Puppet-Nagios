@@ -26,9 +26,9 @@ class nagios::base {
     }
 
     file { 'nagios_htpasswd':
-        path => "${nagios::defaults::vars::int_nagios_cfgdir}/htpasswd.users",
-        source => [ "puppet:///modules/site-nagios/htpasswd.users",
-                    "puppet:///modules/nagios/htpasswd.users" ],
+        path => "${nagios::defaults::vars::int_nagios_cfgdir}/passwd",
+        source => [ "puppet:///modules/site-nagios/passwd",
+                    "puppet:///modules/nagios/passwd" ],
         mode => 0640, owner => root, group => apache;
     }
 

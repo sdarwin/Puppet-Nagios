@@ -1,36 +1,29 @@
 Introduction/Notes
 =====================
 
-As of 2012/08/13 this is just a work in progress.   Don't use.  Should be ready soon.
+This is a complete nagios puppet implementation that works right out of the box.   It should support Redhat based servers such as Centos, and Debian based servers such as Ubuntu.   Both the client ( nrpe ) and the server. 
 
-TODO:  
-get apt-update to run before packages.
-ubuntu (at least) : user and group nagios need to exist.  Add a resource.
+I strongly encourage users to send me bug fixes or just say hi and tell me they are using this module.  
 
-TODO - NICE TO HAVE:
-automate population of nagios server IP address into nrpe.cfg.  It must be manually set right now.
+Tested on RH6 and Ubuntu 12.
+Need to test on RH5 and Debian.
 
-This was based on the immerda project, which was based on David Schmitt. See docs/README.orig for instructions.  NRPE from mstanislav.
+See the INSTALL file for installation details.
 
-The goal is to create a complete nagios puppet implementation that works right out of the box.   As of July 2012, I only see partial and broken
-nagios examples, although who knows.
+See the docs/README.orig file for more information.
 
-To change nagios admin password: install httpd-tools, run htpasswd htpasswd.users admin inside the files dir on the htpasswd.users file.
-
-=======================
-
-Example: To get a service to work, use this syntax on a target node:
-
-nagios::service::http {test:} 
-
-Notice in this example that it doesn't use the keyword "include".  It is just calling a resource.
+Thanks,
+Sam
 
 
 License
 =======
 
+This work was based on the following.
+
+nrpe code : mstanislav mark.stanislav@gmail.com
+
 Copyright (C) 2007 David Schmitt <david@schmitt.edv-bus.at>
-See the file LICENSE in the top directory for the full license.
 
 Copyright (C) 2010 Riseup Networks <micah@riseup.net>
 

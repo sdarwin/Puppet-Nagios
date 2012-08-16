@@ -17,12 +17,6 @@ class nrpe::debian {
 
     package { [ "nagios-nrpe-server", "libnagios-plugin-perl", "libcache-cache-perl" ]: ensure => present }
 
-if !defined(Package["nagios-plugins"]) {
-        package {"nagios-plugins":
-                ensure => installed,
-                }
-        }
-
 
     service { "nagios-nrpe-server":
         ensure  => running,

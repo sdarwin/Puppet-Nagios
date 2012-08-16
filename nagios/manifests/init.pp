@@ -39,6 +39,11 @@ class nagios {
 	ensure => present
 	}
 
+	group { nagios:
+	ensure => present,
+	require => User['nagios']
+	}
+
     case $nagios_httpd {
         'absent': { }
         'lighttpd': { include lighttpd }
