@@ -8,13 +8,21 @@ class nrpe::yum (
   #$mnx = true
   $mnx = false
 ) {
+
+
+	 Yumrepo["epel"] -> Package <| |>
+
     yumrepo {
         "epel":
             descr          => $::lsbmajdistrelease ? {
 		"5" => 		"Extra Packages for Enterprise Linux 5 - \$basearch",
 		"6" => 		"Extra Packages for Enterprise Linux 6 - \$basearch"
+				},	
+	mirrorlist	=>  $::lsbmajdistrelease ? {
+		"5" => 		"http://mirrors.fedoraproject.org/mirrorlist?repo=epel-5&arch=\$basearch",
+		"6" => 		"https://mirrors.fedoraproject.org/metalink?repo=epel-${lsbmajdistrelease}&arch=\$basearch",
+		default => 	"https://mirrors.fedoraproject.org/metalink?repo=epel-${lsbmajdistrelease}&arch=\$basearch",
 				},
-            mirrorlist     => "https://mirrors.fedoraproject.org/metalink?repo=epel-${lsbmajdistrelease}&arch=\$basearch",
             failovermethod => "priority",
             gpgcheck       => "0",
             enabled        => $yum::epel ? {

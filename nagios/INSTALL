@@ -3,6 +3,8 @@ INSTALLATION
 
 PRE-REQUISITES
 
+Puppet versions at least 2.7 required on all nodes.
+
 First, install puppet server.  Add storeconfig functionality with a DB backend so that exported resources work.  Google storeconfig for more details.
 
 Assign fully qualified hostnames to the puppet nodes and puppet server and make sure they are either in DNS, or in /etc/hosts, on all nodes.

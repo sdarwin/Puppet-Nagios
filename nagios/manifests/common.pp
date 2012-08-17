@@ -18,6 +18,11 @@ case $::osfamily {
 	}
 'debian': {
 
+        exec { "apt-update":
+                command => "/usr/bin/touch /tmp/apt-get-update ; /usr/bin/apt-get update",
+                onlyif => "/bin/sh -c '[ ! -f /tmp/apt-get-update ] || test `find /tmp/apt-get-update -mmin +1440` > /dev/null 2>@1'",
+                }
+
     package { [ 'nagios-snmp-plugins' ]:
         ensure => 'present',
         #notify => Service['nagios'],

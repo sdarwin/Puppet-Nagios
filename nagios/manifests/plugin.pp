@@ -3,10 +3,18 @@ define nagios::plugin(
     $ensure = present
 ){
 
-
    case $::osfamily {
     'redhat': {
-        $libpath = "lib64"
+
+   	case $::hardwaremodel {
+    		'x86_64': {
+        	$libpath = "lib64"
+        	}
+    		'i686': {
+        	$libpath = "lib"
+        	}
+        	}
+
 	}
     'debian': {
 	$libpath = "lib"
@@ -14,10 +22,7 @@ define nagios::plugin(
 	}
 
   file{$name:
-    path => $hardwaremodel ? {
-      'x86_64' => "/usr/$libpath/nagios/plugins/$name",
-      default => "/usr/$libpath/nagios/plugins/$name",
-    },
+    path => "/usr/$libpath/nagios/plugins/$name",
     ensure => $ensure,
     source => $source ? {
       'absent' => "puppet:///modules/nagios/plugins/$name",

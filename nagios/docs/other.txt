@@ -1,0 +1,27 @@
+
+=============================
+redhat 5 installation:
+=============================
+
+create puppet.repo:
+
+[puppetlabs]
+name=Puppet Labs Packages
+baseurl=http://yum.puppetlabs.com/el/5/products/i386/
+enabled=1
+gpgcheck=1
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+
+[puppetlabs-more]
+name=Puppet Labs Packages
+baseurl=http://yum.puppetlabs.com/el/5/dependencies/i386/
+enabled=1
+gpgcheck=1
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+
+==============================
+debian installation:
+==============================
+
+apt-get update is required
+

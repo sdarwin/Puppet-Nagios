@@ -2,11 +2,6 @@ class nagios::debian inherits nagios::base {
 
 	Exec["apt-update"] -> Package <| |> 
 
-	exec { "apt-update":
-		command => "/usr/bin/touch /tmp/apt-get-update ; /usr/bin/apt-get update",
-		onlyif => "/bin/sh -c '[ ! -f /tmp/apt-get-update ] || test `find /tmp/apt-get-update -mmin +1440` > /dev/null 2>@1'",
-		}
-
 	include nagios::apache
 
     package { 'nagios':
