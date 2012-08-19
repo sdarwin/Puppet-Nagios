@@ -1,0 +1,33 @@
+
+=============================
+redhat 5 installation:
+=============================
+
+create puppet.repo:
+
+[puppetlabs]
+name=Puppet Labs Packages
+baseurl=http://yum.puppetlabs.com/el/5/products/i386/
+enabled=1
+gpgcheck=1
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+
+[puppetlabs-more]
+name=Puppet Labs Packages
+baseurl=http://yum.puppetlabs.com/el/5/dependencies/i386/
+enabled=1
+gpgcheck=1
+gpgkey=http://yum.puppetlabs.com/RPM-GPG-KEY-puppetlabs
+
+---
+
+nagios2 is installed, which is not good for the server.
+
+==============================
+debian installation:
+==============================
+
+apt-get update is required
+
+You must research how to pin packages, and get a newer version of puppet installed.   
+

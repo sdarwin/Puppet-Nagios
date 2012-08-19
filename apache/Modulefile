@@ -1,0 +1,6 @@
+name 'sdarwin-apache'
+version '0.5.0'
+description "Manage Nagios with Puppet."
+source "https://github.com/sdarwin/Puppet-Nagios"
+
+

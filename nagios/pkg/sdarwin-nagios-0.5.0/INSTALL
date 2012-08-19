@@ -1,0 +1,83 @@
+INSTALLATION
+
+PRE-REQUISITES
+
+Puppet versions at least 2.7 required on all nodes, at least because the $::osfamily facter variable is used.
+
+Nagios3 server is recommended, which is what you'll get on RH6 or Ubuntu12, and a variety of gotchas occur with nagio2 server. no subhostgroups, bad apache file, perhaps others.
+
+Nagios client and nrpe versions should hopefully be flexible to support older clients.
+
+First, install puppet server.  Add storeconfig functionality with a DB backend so that exported resources work.  Google storeconfig for more details.
+
+Assign fully qualified hostnames to the puppet nodes and puppet server and make sure they are either in DNS, or in /etc/hosts, on all nodes.
+
+#install puppet client
+
+#redhat
+(check iptables.  this module won't punch a hole in iptables yet for usage of nrpe and nagios.)
+
+su -c 'rpm -ivh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm'
+#or similar...
+
+yum install puppet
+
+#ubuntu:
+#on client:
+apt-get install puppet
+vi /etc/defaults/puppet
+
+#on both OS's
+add to /etc/hosts the IP of puppet server
+x.x.x.x puppet
+
+#on client:
+puppetd --waitforcert 30 --server puppet -v
+
+#on server
+puppetca --list
+puppetca --sign
+
+#to allow puppet kick from the server, add auth.conf and the agent section in puppet.conf.
+
+DONE WITH PREREQUISITES
+
+MAIN INSTRUCTIONS
+
+#create site.pp with at least something like this.
+
+node basenode {
+        include nagios::target
+}
+
+#host1 will be nagios server
+node 'host1.ec2.internal' inherits basenode {
+        include nagios
+        }
+
+#host2 and others will be nagios clients
+node 'host2.ec2.internal' inherits basenode {}
+
+--------------
+
+apply the puppet modules to the nodes with puppet kick or puppet agent.
+
+Connect to the new nagios server at http://servername/nagios
+
+username: nagiosadmin
+password: nagiosadmin
+
+You can change the password by using htpasswd on the passwd file (run locate passwd to find it)
+
+=======================
+
+Example: To get a service to work, use this syntax on a target node in site.pp
+
+nagios::service::http {test:}
+
+Notice in this example that it doesn't use the keyword "include".  It is just calling a resource.
+
+To add basic nagios entries, put them into the defaults directory in the nagios module.
+
+Take a look at docs/README.orig for more information.   That was from the code that this was based on.
+

@@ -1,0 +1,30 @@
+Introduction/Notes
+=====================
+
+This is a complete nagios puppet implementation that works right out of the box.   It should support Redhat based servers such as Centos, and Debian based servers such as Ubuntu.   Both the client ( nrpe ) and the server. 
+
+Doesn't that sound grand?
+
+I strongly encourage users to send me bug fixes or just write to say they are using the module.  This module is very new.   It could be categorized as a BETA VERSION until I get feedback.
+
+See the INSTALL file for installation details.
+
+See the docs/README.orig file for more information.
+
+Thanks,
+Sam
+
+
+License
+=======
+
+This work was based on the following.
+
+nrpe code : mstanislav mark.stanislav@gmail.com
+
+Copyright (C) 2007 David Schmitt <david@schmitt.edv-bus.at>
+
+Copyright (C) 2010 Riseup Networks <micah@riseup.net>
+
+Copyright (C) 2012 Sam Darwin <samuel.d.darwin at gmail>
+
