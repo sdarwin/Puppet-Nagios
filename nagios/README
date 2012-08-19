@@ -1,23 +1,11 @@
 Introduction/Notes
 =====================
 
-TODO:
-a single install on centos6 to check nagios.conf in apache, and how it deals with empty hostgroup.
-install ubuntu and centos as only nrpe to see that nagios doesn't get on there.
-
-apache nagios.conf file on RH5 not working?
-empty host group not working on nagios2.  is this a problem with nagios 3?  
-host-subgroup not working on nagios2.
-debian caused nagios to install. is this generally happening for nrpe?
-may be an issue with apache nagios.conf not permitting hosts by default on nagios2.  try nagios3.
-
-
 This is a complete nagios puppet implementation that works right out of the box.   It should support Redhat based servers such as Centos, and Debian based servers such as Ubuntu.   Both the client ( nrpe ) and the server. 
 
-I strongly encourage users to send me bug fixes or just say hi and tell me they are using this module.  
+Doesn't that sound grand?
 
-Tested on RH6 and Ubuntu 12.
-Need to test on RH5 and Debian.
+I strongly encourage users to send me bug fixes or just write to say they are using the module.  This module is very new.   It could be categorized as a BETA VERSION until I get feedback.
 
 See the INSTALL file for installation details.
 
