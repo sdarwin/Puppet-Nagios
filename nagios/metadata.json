@@ -1,0 +1,10 @@
+{"nagios": {
+"source": "https://github.com/sdarwin/Puppet-Nagios",
+"author": "Sam Darwin",
+"version": "0.5",
+"license": "GPL3",
+"puppetversion": "2.7.9",
+"summary": "Puppet Nagios Module",
+"description": "Manage Nagios with Puppet",
+"project_page": "https://github.com/sdarwin/Puppet-Nagios"
+}}
