@@ -1,0 +1,4 @@
+See README in nagios module.
+
+The nrpe and nagios modules depend on each other.
+
