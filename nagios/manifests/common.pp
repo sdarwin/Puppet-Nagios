@@ -29,14 +29,6 @@ case $::osfamily {
     require => Exec["apt-update"],
 }
 
-if !defined(Package["nagios-nrpe-plugin"]) {
-        package {"nagios-nrpe-plugin":
-                ensure => installed,
-                #notify => Service['nagios'],
-                require => Exec["apt-update"],
-                }
-        }
-
 if !defined(Package["nagios-plugins"]) {
         package {"nagios-plugins":
                 ensure => installed,

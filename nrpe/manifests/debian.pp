@@ -8,7 +8,9 @@ class nrpe::debian {
 
     $libpath = "lib"
 
-    package { [ "nagios-nrpe-server", "libnagios-plugin-perl", "libcache-cache-perl" ]: ensure => present }
+    #package { [ "nagios-nrpe-server", "libnagios-plugin-perl", "libcache-cache-perl" ]: ensure => present }
+	#are the other modules causing nagios3 to be installed?
+    package { [ "nagios-nrpe-server" ]: ensure => present }
 
 
     service { "nagios-nrpe-server":

@@ -14,6 +14,13 @@ class nagios::debian inherits nagios::base {
         }
 	include nagios::common
 
+if !defined(Package["nagios-nrpe-plugin"]) {
+        package {"nagios-nrpe-plugin":
+                ensure => installed,
+                #notify => Service['nagios'],
+                require => Exec["apt-update"],
+                }
+        }
 
     File['nagios_htpasswd', 'nagios_cgi_cfg'] { group => 'www-data' }
 

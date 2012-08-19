@@ -1,9 +1,12 @@
-
 INSTALLATION
 
 PRE-REQUISITES
 
-Puppet versions at least 2.7 required on all nodes.
+Puppet versions at least 2.7 required on all nodes, at least because the $::osfamily facter variable is used.
+
+Nagios3 server is recommended, which is what you'll get on RH6 or Ubuntu12, and a variety of gotchas occur with nagio2 server. no subhostgroups, bad apache file, perhaps others.
+
+Nagios client and nrpe versions should hopefully be flexible to support older clients.
 
 First, install puppet server.  Add storeconfig functionality with a DB backend so that exported resources work.  Google storeconfig for more details.
 
@@ -12,6 +15,8 @@ Assign fully qualified hostnames to the puppet nodes and puppet server and make 
 #install puppet client
 
 #redhat
+(check iptables.  this module won't punch a hole in iptables yet for usage of nrpe and nagios.)
+
 su -c 'rpm -ivh http://download.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-7.noarch.rpm'
 #or similar...
 
@@ -75,7 +80,4 @@ Notice in this example that it doesn't use the keyword "include".  It is just ca
 To add basic nagios entries, put them into the defaults directory in the nagios module.
 
 Take a look at docs/README.orig for more information.   That was from the code that this was based on.
-
-
-
 

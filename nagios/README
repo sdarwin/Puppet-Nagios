@@ -2,6 +2,9 @@ Introduction/Notes
 =====================
 
 TODO:
+a single install on centos6 to check nagios.conf in apache, and how it deals with empty hostgroup.
+install ubuntu and centos as only nrpe to see that nagios doesn't get on there.
+
 apache nagios.conf file on RH5 not working?
 empty host group not working on nagios2.  is this a problem with nagios 3?  
 host-subgroup not working on nagios2.

@@ -1,5 +1,6 @@
 class nagios::defaults::hostgroups {
-  nagios_hostgroup {
+
+ nagios_hostgroup {
     'all':
       alias   => 'All Servers',
     	members => '*';
@@ -7,7 +8,13 @@ class nagios::defaults::hostgroups {
       alias   => 'Debian GNU/Linux Servers';
     'redhat-servers':
       alias   => 'RedHat GNU/Linux Servers';
-#    'linux-servers':
-#	alias => 'Linux Servers',
-#	members => 'redhat-servers','debian-servers'; }
-}
+
+    #not for nagios2.  can be used for nagios3.
+    #'linux-servers':
+    #  alias => 'Linux Servers',
+    #  hostgroup_members => 'redhat-servers,debian-servers';
+
+
+	}
+	}
+
